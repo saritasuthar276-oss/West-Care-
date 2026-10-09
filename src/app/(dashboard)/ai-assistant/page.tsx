@@ -261,7 +261,9 @@ export default function AIAssistantPage() {
                               </div>
                             </>
                           ) : (
-                            <ReactMarkdown className="markdown-content text-gray-700 leading-relaxed">{msg.text || ""}</ReactMarkdown>
+                            <div className="markdown-content text-gray-700 leading-relaxed">
+                              <ReactMarkdown>{msg.text || ""}</ReactMarkdown>
+                            </div>
                           )}
 
                         </div>
