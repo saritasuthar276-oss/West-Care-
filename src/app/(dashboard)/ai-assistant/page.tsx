@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from 'react-markdown';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -64,18 +65,36 @@ export default function AIAssistantPage() {
         body: JSON.stringify({ message: userMessage })
       });
       
-      const data = await res.json();
-      
-      setMessages(prev => [...prev, { 
-        role: 'ai', 
-        text: data.text || "Sorry, I couldn't generate a response." 
-      }]);
+      if (!res.body) throw new Error("No response body");
+      setIsTyping(false); // Stop typing indicator since it's streaming now
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+      let currentText = "";
+
+      // Add empty AI message
+      setMessages(prev => [...prev, { role: 'ai', text: "" }]);
+
+      while (!done) {
+        const { value, done: readerDone } = await reader.read();
+        done = readerDone;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true });
+          currentText += chunk;
+          
+          setMessages(prev => {
+            const newMsgs = [...prev];
+            newMsgs[newMsgs.length - 1] = { ...newMsgs[newMsgs.length - 1], text: currentText };
+            return newMsgs;
+          });
+        }
+      }
     } catch (error) {
       setMessages(prev => [...prev, { 
         role: 'ai', 
         text: "Error connecting to AI service." 
       }]);
-    } finally {
       setIsTyping(false);
     }
   };
@@ -242,7 +261,7 @@ export default function AIAssistantPage() {
                               </div>
                             </>
                           ) : (
-                            <p className="text-gray-700">{msg.text}</p>
+                            <ReactMarkdown className="markdown-content text-gray-700 leading-relaxed">{msg.text || ""}</ReactMarkdown>
                           )}
 
                         </div>

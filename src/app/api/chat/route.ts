@@ -17,11 +17,34 @@ export async function POST(req: Request) {
 User message: ${message}
 AI Response:`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    const result = await model.generateContentStream(prompt);
+    
+    // Create a ReadableStream from the generator
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of result.stream) {
+            const chunkText = chunk.text();
+            if (chunkText) {
+              controller.enqueue(encoder.encode(chunkText));
+            }
+          }
+          controller.close();
+        } catch (error) {
+          controller.error(error);
+        }
+      }
+    });
 
-    return NextResponse.json({ text });
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
+
   } catch (error: any) {
     console.error('Chat API Error:', error);
     return NextResponse.json(
