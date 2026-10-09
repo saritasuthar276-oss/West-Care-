@@ -48,7 +48,7 @@ export default function AIAssistantPage() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!inputValue.trim()) return;
     
     const userMessage = inputValue;
@@ -57,29 +57,27 @@ export default function AIAssistantPage() {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate AI response delay
-    setTimeout(() => {
-      let aiResponse = "I've analyzed the recent trends. It looks like you should prepare 10% less rice on Fridays, and increase the vegetable portions slightly based on recent consumption data. Do you want me to update the menu?";
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      });
       
-      const lowerInput = userMessage.toLowerCase();
-      if (lowerInput.includes('hi') || lowerInput.includes('hello')) {
-        aiResponse = "Hello Naresh! How can I help you optimize your meal planning or reduce food waste today?";
-      } else if (lowerInput.includes('menu') || lowerInput.includes('suggest')) {
-        aiResponse = "Based on attendance predictions, I suggest: Breakfast (Oatmeal & Fruits), Lunch (Palak Paneer & Roti), and Dinner (Mixed Veg Dal). This balances nutrition and historical preference. Should I apply this to the planner?";
-      } else if (lowerInput.includes('waste')) {
-        aiResponse = "I noticed rice waste is up 12% this week. I recommend lowering the preparation quantity from 60kg to 52kg for the next 3 days to bring waste back under the 5% threshold.";
-      } else if (lowerInput.includes('report') || lowerInput.includes('generate')) {
-        aiResponse = "I am generating the weekly efficiency report now. You have saved ₹4,200 this week by optimizing dairy inventory! I will notify you when the full PDF is ready.";
-      } else if (lowerInput.includes('inventory') || lowerInput.includes('stock')) {
-        aiResponse = "You are running low on Tomatoes (5kg left, min level is 15kg). I have drafted a purchase order for 20kg from your primary supplier. Would you like me to send it?";
-      }
-
+      const data = await res.json();
+      
       setMessages(prev => [...prev, { 
         role: 'ai', 
-        text: aiResponse 
+        text: data.text || "Sorry, I couldn't generate a response." 
       }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        role: 'ai', 
+        text: "Error connecting to AI service." 
+      }]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handlePromptClick = (text: string) => {
