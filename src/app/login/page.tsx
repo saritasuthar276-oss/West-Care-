@@ -165,18 +165,18 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel (Login) */}
-      <div className="w-full lg:w-1/2 h-full bg-gray-50 flex items-center justify-center p-6 xl:p-10 relative">
+      <div className="w-full lg:w-1/2 h-full bg-slate-100 flex items-center justify-center p-4 xl:p-10 relative">
         <div className="w-full max-w-[460px]">
-          <div className="bg-white rounded-[24px] py-8 px-6 sm:px-8 xl:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-200 w-full flex flex-col justify-center">
+          <div className="bg-white rounded-[24px] p-5 sm:px-8 xl:p-10 shadow-xl border border-gray-200 w-full flex flex-col justify-center">
             
-            <div className="flex justify-center mb-3 xl:mb-8">
-              <div className="flex items-center gap-2.5">
+            <div className="flex justify-center mb-2 xl:mb-8">
+              <div className="flex items-center gap-2">
                 <div className="text-[#0f8b3c]">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
                 </div>
                 <div>
-                  <h1 className="text-xl xl:text-2xl font-extrabold tracking-tight text-gray-900">WasteWise <span className="text-[#0f8b3c]">AI</span></h1>
-                  <p className="text-[10px] xl:text-[11px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
+                  <h1 className="text-lg xl:text-2xl font-extrabold tracking-tight text-gray-900">WasteWise <span className="text-[#0f8b3c]">AI</span></h1>
+                  <p className="text-[9px] xl:text-[11px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
                 </div>
               </div>
             </div>
