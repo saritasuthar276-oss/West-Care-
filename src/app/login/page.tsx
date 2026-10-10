@@ -114,12 +114,6 @@ export default function LoginPage() {
 
       {/* Right Panel (Login) */}
       <div className="w-full lg:w-1/2 flex flex-col relative bg-gray-50/50 overflow-y-auto">
-        
-        <div className="absolute top-6 right-8">
-          <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors font-semibold">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </button>
-        </div>
 
         <div className="flex-1 flex flex-col justify-center items-center p-6 w-full py-16">
           
