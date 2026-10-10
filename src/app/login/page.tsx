@@ -3,16 +3,20 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { 
+  Leaf, 
+  BarChart2, 
+  Recycle, 
+  HeartHandshake, 
   Users, 
   Mail, 
   Lock, 
   Eye, 
   EyeOff,
   ArrowRight,
+  Cloud,
   Loader2,
   ArrowLeft,
-  Truck,
-  HeartHandshake
+  Truck
 } from "lucide-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -48,12 +52,116 @@ export default function LoginPage() {
   return (
     <div className="h-screen w-full flex bg-gray-50 font-sans text-gray-900 overflow-hidden">
       
-      {/* Left Panel (Exact Mockup Image) */}
-      <div className="hidden lg:block w-1/2 h-full relative bg-white">
+      {/* Left Panel */}
+      <div className="hidden lg:flex flex-col w-1/2 relative bg-white">
+        
+        {/* Background Image on the right side of the left panel */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/exact_bg.jpg')" }}
+          className="absolute right-0 top-0 bottom-0 w-[80%] bg-cover bg-center z-0"
+          style={{ backgroundImage: "url('/food_bg.jpg')" }}
         />
+        {/* Gradient fading to white on the left */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-white/30 to-transparent" />
+        
+        {/* Content Wrapper */}
+        <div className="relative z-10 flex flex-col min-h-full w-full">
+          
+          <div className="flex-1 flex flex-col justify-center px-10 xl:px-14 py-2 xl:py-8 max-w-2xl">
+            
+            {/* Logo */}
+            <div className="flex items-center gap-3 mb-4 xl:mb-6">
+              <div className="text-green-600 bg-green-50 p-2 xl:p-2.5 rounded-xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              </div>
+              <div>
+                <h1 className="text-xl font-extrabold tracking-tight text-gray-900">WasteWise <span className="text-[#0f8b3c]">AI</span></h1>
+                <p className="text-[12px] text-gray-500 font-medium">Smart Food, Better Tomorrow</p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl xl:text-4xl font-extrabold leading-[1.15] mb-2 xl:mb-3 text-gray-900">
+              Reduce Food Waste<br />
+              Build a <span className="text-[#0f8b3c]">Sustainable</span><br />
+              <span className="text-[#0f8b3c]">Tomorrow</span>
+            </h2>
+            
+            <p className="text-gray-600 text-[13px] xl:text-[15px] mb-4 xl:mb-6 max-w-md leading-relaxed font-medium">
+              AI-powered mess management to predict, reduce, and reuse food for a healthier and happier community.
+            </p>
+
+            <div className="grid grid-cols-1 gap-2 xl:gap-4 max-w-md">
+              <div className="flex items-start gap-3">
+                <div className="bg-green-100/80 p-2.5 rounded-xl text-green-700">
+                  <BarChart2 className="w-4 h-4" />
+                </div>
+                <div className="pt-0.5">
+                  <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-0.5">Smart Predictions</h3>
+                  <p className="text-[12px] text-gray-500 leading-tight">AI-based meal demand forecasting</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="bg-green-100/80 p-2.5 rounded-xl text-green-700">
+                  <Recycle className="w-4 h-4" />
+                </div>
+                <div className="pt-0.5">
+                  <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-0.5">Reduce Waste</h3>
+                  <p className="text-[12px] text-gray-500 leading-tight">Track and minimize food waste</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="bg-orange-100/80 p-2.5 rounded-xl text-orange-600">
+                  <HeartHandshake className="w-4 h-4" />
+                </div>
+                <div className="pt-0.5">
+                  <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-0.5">Food Donation</h3>
+                  <p className="text-[12px] text-gray-500 leading-tight">Connect surplus food to NGOs</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-100/80 p-2.5 rounded-xl text-blue-600">
+                  <Users className="w-4 h-4" />
+                </div>
+                <div className="pt-0.5">
+                  <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-0.5">Better Community</h3>
+                  <p className="text-[12px] text-gray-500 leading-tight">Healthy students, greener planet</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Wavy Stats Bar */}
+          <div className="w-full mt-auto">
+            <svg viewBox="0 0 1440 120" className="w-full h-[40px] xl:h-[70px] text-[#0f8b3c] fill-current -mb-1" preserveAspectRatio="none">
+              <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z"></path>
+            </svg>
+            <div className="bg-[#0f8b3c] px-10 xl:px-14 pb-4 xl:pb-8 pt-0 xl:pt-1 flex justify-between items-center w-full text-white">
+              <div className="flex items-center gap-2">
+                <Leaf className="w-5 xl:w-6 h-5 xl:h-6 text-white" />
+                <div>
+                  <div className="text-lg font-extrabold leading-none tracking-tight">1,200+</div>
+                  <div className="text-[11px] text-green-100 font-medium mt-1">Meals Saved</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Cloud className="w-6 h-6 text-white" />
+                <div>
+                  <div className="text-lg font-extrabold leading-none tracking-tight">850 kg</div>
+                  <div className="text-[11px] text-green-100 font-medium mt-1">CO₂ Reduced</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="w-6 h-6 text-white" />
+                <div>
+                  <div className="text-lg font-extrabold leading-none tracking-tight">500+</div>
+                  <div className="text-[11px] text-green-100 font-medium mt-1">Happy Students</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* Right Panel (Login) */}
@@ -66,10 +174,11 @@ export default function LoginPage() {
           </Link>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-6">
-          <div className="w-full max-w-[460px] bg-white rounded-[24px] p-8 lg:p-10 shadow-sm border border-gray-100">
+        {/* The m-auto ensures the card is perfectly vertically & horizontally centered, safely! */}
+        <div className="m-auto w-full max-w-[480px] py-4 xl:py-12 px-6">
+          <div className="bg-white rounded-[24px] p-6 lg:p-8 xl:p-10 shadow-sm border border-gray-100 w-full">
             
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6 xl:mb-8">
               <div className="flex items-center gap-2.5">
                 <div className="text-[#0f8b3c]">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
@@ -81,13 +190,13 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="text-center mb-8">
+            <div className="text-center mb-6 xl:mb-8">
               <h2 className="text-[22px] font-extrabold text-gray-900 mb-1.5">Welcome Back</h2>
               <p className="text-sm text-gray-500 font-medium">Login to your account to continue</p>
             </div>
 
             {/* Role Tabs */}
-            <div className="flex gap-1 mb-8">
+            <div className="flex gap-1 mb-6 xl:mb-8">
               <button
                 type="button"
                 onClick={() => setRole("admin")}
@@ -185,7 +294,7 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-sm"
+                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-3 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-sm"
               >
                 {isLoading ? (
                   <>
@@ -200,7 +309,7 @@ export default function LoginPage() {
 
             </form>
 
-            <div className="relative my-7">
+            <div className="relative my-5 xl:my-7">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
               </div>
