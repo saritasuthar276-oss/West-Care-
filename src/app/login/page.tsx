@@ -57,12 +57,12 @@ export default function LoginPage() {
         
         {/* Background Image on the right side of the left panel */}
         <div 
-          className="absolute right-0 top-0 bottom-0 w-[70%] bg-cover bg-left z-0"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541848756149-e3843fcbd926?q=80&w=1000')" }}
+          className="absolute right-0 top-0 bottom-0 w-[80%] bg-cover bg-center z-0"
+          style={{ backgroundImage: "url('/campus_bg.jpg')" }}
         />
         {/* Gradient fading to white on the left */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-white via-white/95 to-transparent" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-white/50 to-transparent" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-white/30 to-transparent" />
         
         {/* Content Wrapper */}
         <div className="relative z-10 flex flex-col h-full w-full">
