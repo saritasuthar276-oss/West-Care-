@@ -34,7 +34,7 @@ export function Header() {
              {/* Actual image can be placed here if available */}
           </div>
           <div className="hidden md:block">
-            <p className="text-sm font-semibold leading-tight whitespace-nowrap">Naresh Suthar</p>
+            <p className="text-sm font-semibold leading-tight whitespace-nowrap">Sarita Suthar</p>
             <p className="text-[11px] text-gray-500 whitespace-nowrap">Mess Admin</p>
           </div>
           <ChevronDown className="h-4 w-4 text-gray-400 flex-shrink-0" />

@@ -18,6 +18,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell
 } from 'recharts';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const demandData = [
   { name: 'Mon', predicted: 310, actual: 0 },
@@ -38,13 +40,57 @@ const wasteData = [
 ];
 
 export default function DashboardPage() {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<{role: 'user'|'ai', content: string}[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChatSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    const userMsg = input;
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMsg })
+      });
+
+      if (!res.ok) throw new Error('API error');
+      const reader = res.body?.getReader();
+      if (!reader) return;
+
+      setMessages(prev => [...prev, { role: 'ai', content: '' }]);
+      const decoder = new TextDecoder();
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const text = decoder.decode(value);
+        setMessages(prev => {
+          const newMsgs = [...prev];
+          newMsgs[newMsgs.length - 1].content += text;
+          return newMsgs;
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setMessages(prev => [...prev, { role: 'ai', content: 'Sorry, an error occurred.' }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
       <div className="bg-gradient-to-r from-green-800 to-green-600 rounded-2xl p-8 text-white flex justify-between items-center shadow-md relative overflow-hidden">
         <div className="relative z-10">
           <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
-            Good Morning, Naresh! <span className="text-2xl">👋</span>
+            Good Morning, Sarita! <span className="text-2xl">👋</span>
           </h1>
           <p className="text-green-100 text-lg">Let's make better food decisions today.</p>
         </div>
@@ -202,7 +248,9 @@ export default function DashboardPage() {
             <Card className="border-none shadow-sm">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-base font-semibold text-gray-800">Today's Menu & Expected Quantity</CardTitle>
-                <Button variant="link" className="text-green-600 p-0 h-auto font-medium">View All</Button>
+                <Button variant="link" className="text-green-600 p-0 h-auto font-medium" asChild>
+                  <Link href="/meals">View All</Link>
+                </Button>
               </CardHeader>
               <CardContent className="space-y-4 mt-2">
                 
@@ -273,7 +321,9 @@ export default function DashboardPage() {
             <Card className="border-none shadow-sm">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-base font-semibold text-gray-800">Inventory Status</CardTitle>
-                <Button variant="link" className="text-green-600 p-0 h-auto font-medium">View All</Button>
+                <Button variant="link" className="text-green-600 p-0 h-auto font-medium" asChild>
+                  <Link href="/inventory">View All</Link>
+                </Button>
               </CardHeader>
               <CardContent className="space-y-5 mt-2">
                 
@@ -337,7 +387,9 @@ export default function DashboardPage() {
             <Card className="border-none shadow-sm">
                <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-base font-semibold text-gray-800">Recent Activities</CardTitle>
-                <Button variant="link" className="text-green-600 p-0 h-auto font-medium">View All</Button>
+                <Button variant="link" className="text-green-600 p-0 h-auto font-medium" asChild>
+                  <Link href="/reports">View All</Link>
+                </Button>
               </CardHeader>
               <CardContent className="space-y-4 mt-2">
                 <div className="flex justify-between items-start text-sm">
@@ -384,30 +436,30 @@ export default function DashboardPage() {
                 <CardTitle className="text-base font-semibold text-gray-800">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
-                <div className="flex flex-col items-center justify-center p-3 bg-green-50 rounded-xl cursor-pointer hover:bg-green-100 transition-colors">
+                <Link href="/meals" className="flex flex-col items-center justify-center p-3 bg-green-50 rounded-xl cursor-pointer hover:bg-green-100 transition-colors">
                   <div className="bg-green-600 text-white p-2 rounded-lg mb-2">
                     <Plus className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-semibold text-green-800 text-center">Add Menu</span>
-                </div>
-                <div className="flex flex-col items-center justify-center p-3 bg-blue-50 rounded-xl cursor-pointer hover:bg-blue-100 transition-colors">
+                </Link>
+                <Link href="/inventory" className="flex flex-col items-center justify-center p-3 bg-blue-50 rounded-xl cursor-pointer hover:bg-blue-100 transition-colors">
                   <div className="bg-blue-600 text-white p-2 rounded-lg mb-2">
                     <RefreshCw className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-semibold text-blue-800 text-center">Update Stock</span>
-                </div>
-                <div className="flex flex-col items-center justify-center p-3 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-100 transition-colors">
+                </Link>
+                <Link href="/reports" className="flex flex-col items-center justify-center p-3 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-100 transition-colors">
                   <div className="bg-orange-500 text-white p-2 rounded-lg mb-2">
                     <FileText className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-semibold text-orange-800 text-center">View Reports</span>
-                </div>
-                <div className="flex flex-col items-center justify-center p-3 bg-purple-50 rounded-xl cursor-pointer hover:bg-purple-100 transition-colors">
+                </Link>
+                <Link href="/bookings" className="flex flex-col items-center justify-center p-3 bg-purple-50 rounded-xl cursor-pointer hover:bg-purple-100 transition-colors">
                   <div className="bg-purple-600 text-white p-2 rounded-lg mb-2">
                     <Users className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-semibold text-purple-800 text-center text-balance">Manage Students</span>
-                </div>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -426,9 +478,9 @@ export default function DashboardPage() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
               </button>
             </CardHeader>
-            <CardContent className="flex-1 p-4 flex flex-col justify-between">
+            <CardContent className="flex-1 p-4 flex flex-col justify-between overflow-hidden">
               
-              <div className="space-y-6">
+              <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
                 <div className="bg-green-50 text-green-800 p-4 rounded-xl text-sm leading-relaxed flex gap-3 shadow-sm border border-green-100">
                   <div className="bg-green-200 text-green-700 p-1.5 rounded-full h-8 w-8 flex items-center justify-center flex-shrink-0">
                     <MessageSquare className="w-4 h-4" />
@@ -436,36 +488,60 @@ export default function DashboardPage() {
                   <p>Ask me anything about meals, stock, waste, or suggestions...</p>
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-600 mb-3">Try asking:</h4>
-                  <div className="space-y-2">
-                    <button className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
-                      "How many students are expected tomorrow?"
-                    </button>
-                    <button className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
-                      "Show this week's food waste report"
-                    </button>
-                    <button className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
-                      "Suggest tomorrow's menu"
-                    </button>
-                    <button className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
-                      "Which items are low in stock?"
-                    </button>
+                {messages.length === 0 && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-600 mb-3">Try asking:</h4>
+                    <div className="space-y-2">
+                      <button onClick={() => setInput("How many students are expected tomorrow?")} className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
+                        "How many students are expected tomorrow?"
+                      </button>
+                      <button onClick={() => setInput("Show this week's food waste report")} className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
+                        "Show this week's food waste report"
+                      </button>
+                      <button onClick={() => setInput("Suggest tomorrow's menu")} className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
+                        "Suggest tomorrow's menu"
+                      </button>
+                      <button onClick={() => setInput("Which items are low in stock?")} className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm text-gray-700 border border-gray-100 transition-colors shadow-sm">
+                        "Which items are low in stock?"
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {messages.map((msg, i) => (
+                  <div key={i} className={`p-4 rounded-xl text-sm leading-relaxed flex gap-3 shadow-sm ${msg.role === 'user' ? 'bg-gray-100 text-gray-800 ml-8' : 'bg-green-50 text-green-800 border border-green-100 mr-8'}`}>
+                    {msg.role === 'ai' && (
+                      <div className="bg-green-200 text-green-700 p-1.5 rounded-full h-8 w-8 flex items-center justify-center flex-shrink-0">
+                        <MessageSquare className="w-4 h-4" />
+                      </div>
+                    )}
+                    <div className="whitespace-pre-wrap">{msg.content}</div>
+                  </div>
+                ))}
+                {isLoading && (
+                   <div className="p-4 rounded-xl text-sm leading-relaxed flex gap-3 shadow-sm bg-green-50 text-green-800 border border-green-100 mr-8">
+                     <div className="bg-green-200 text-green-700 p-1.5 rounded-full h-8 w-8 flex items-center justify-center flex-shrink-0 animate-pulse">
+                        <MessageSquare className="w-4 h-4" />
+                     </div>
+                     <div className="flex items-center">Thinking...</div>
+                   </div>
+                )}
               </div>
 
-              <div className="mt-8">
-                <div className="relative">
+              <div className="mt-auto pt-4 border-t border-gray-100">
+                <form onSubmit={handleChatSubmit} className="relative">
                   <input 
                     type="text" 
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
                     placeholder="Type your question..." 
                     className="w-full pr-12 pl-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-500/20"
+                    disabled={isLoading}
                   />
-                  <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 text-white p-1.5 rounded-lg hover:bg-green-600 transition-colors">
+                  <button type="submit" disabled={isLoading || !input.trim()} className="absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 text-white p-1.5 rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                   </button>
-                </div>
+                </form>
                 <p className="text-center text-[10px] text-gray-400 mt-2 flex items-center justify-center gap-1">
                   <span>✦</span> Powered by Gemini AI
                 </p>

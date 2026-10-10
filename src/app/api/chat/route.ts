@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: 'gemini-3.7-flash' });
 
-    const prompt = `You are the WasteWise AI assistant for a hostel mess management system. You help the user (Naresh) optimize meal planning, track food waste, and manage inventory. Keep your responses concise, helpful, and professional. 
+    const prompt = `You are the WasteWise AI assistant for a hostel mess management system. You help the user (Sarita) optimize meal planning, track food waste, and manage inventory. Keep your responses concise, helpful, and professional. 
 
 User message: ${message}
 AI Response:`;
@@ -45,10 +45,10 @@ AI Response:`;
       },
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Chat API Error:', error);
     return NextResponse.json(
-      { error: 'Failed to generate response', details: error.message },
+      { error: 'Failed to generate response', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }
