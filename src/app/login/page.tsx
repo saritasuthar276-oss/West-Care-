@@ -195,7 +195,7 @@ export default function LoginPage() {
                   role === "admin" ? "bg-[#139c43] text-white shadow-md shadow-green-600/20" : "bg-[#f4f5f7] text-gray-600 hover:bg-gray-200"
                 }`}
               >
-                <Users className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Mess Admin</span><span className="sm:hidden">Admin</span>
+                <Users className="w-3.5 h-3.5" /> <span>Admin</span>
               </button>
               <button
                 type="button"
