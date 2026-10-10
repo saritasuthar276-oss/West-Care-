@@ -170,10 +170,10 @@ export default function LoginPage() {
 
 
         {/* The m-auto ensures the card is perfectly vertically & horizontally centered, safely! */}
-        <div className="m-auto w-full max-w-[480px] py-4 xl:py-12 px-6">
-          <div className="bg-white rounded-[24px] p-6 lg:p-8 xl:p-10 shadow-sm border border-gray-100 w-full">
+        <div className="m-auto w-full max-w-[480px] py-2 xl:py-10 px-4 sm:px-6">
+          <div className="bg-white rounded-[24px] p-5 lg:p-6 xl:p-10 shadow-sm border border-gray-100 w-full">
             
-            <div className="flex justify-center mb-6 xl:mb-8">
+            <div className="flex justify-center mb-4 xl:mb-8">
               <div className="flex items-center gap-2.5">
                 <div className="text-[#0f8b3c]">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
@@ -185,52 +185,52 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="text-center mb-6 xl:mb-8">
-              <h2 className="text-[22px] font-extrabold text-gray-900 mb-1.5">Welcome Back</h2>
-              <p className="text-sm text-gray-500 font-medium">Login to your account to continue</p>
+            <div className="text-center mb-4 xl:mb-8">
+              <h2 className="text-xl xl:text-[22px] font-extrabold text-gray-900 mb-1 xl:mb-1.5">Welcome Back</h2>
+              <p className="text-xs xl:text-sm text-gray-500 font-medium">Login to your account to continue</p>
             </div>
 
             {/* Role Tabs */}
-            <div className="flex gap-1 mb-6 xl:mb-8">
+            <div className="flex gap-1 mb-4 xl:mb-8">
               <button
                 type="button"
                 onClick={() => setRole("admin")}
-                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[11px] font-bold py-3 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[10px] xl:text-[11px] font-bold py-2 xl:py-3 px-1 rounded-xl transition-all ${
                   role === "admin" ? "bg-[#0f8b3c] text-white shadow-md shadow-green-600/20" : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                <Users className="w-4 h-4" /> <span>Mess Admin</span>
+                <Users className="w-3.5 xl:w-4 h-3.5 xl:h-4" /> <span>Mess Admin</span>
               </button>
               <button
                 type="button"
                 onClick={() => setRole("student")}
-                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[11px] font-bold py-3 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[10px] xl:text-[11px] font-bold py-2 xl:py-3 px-1 rounded-xl transition-all ${
                   role === "student" ? "bg-[#0f8b3c] text-white shadow-md shadow-green-600/20" : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                <Users className="w-4 h-4" /> <span>Student</span>
+                <Users className="w-3.5 xl:w-4 h-3.5 xl:h-4" /> <span>Student</span>
               </button>
               <button
                 type="button"
                 onClick={() => setRole("supplier")}
-                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[11px] font-bold py-3 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[10px] xl:text-[11px] font-bold py-2 xl:py-3 px-1 rounded-xl transition-all ${
                   role === "supplier" ? "bg-[#0f8b3c] text-white shadow-md shadow-green-600/20" : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                <Truck className="w-4 h-4" /> <span>Supplier</span>
+                <Truck className="w-3.5 xl:w-4 h-3.5 xl:h-4" /> <span>Supplier</span>
               </button>
               <button
                 type="button"
                 onClick={() => setRole("ngo")}
-                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[11px] font-bold py-3 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-col items-center justify-center gap-1.5 text-[10px] xl:text-[11px] font-bold py-2 xl:py-3 px-1 rounded-xl transition-all ${
                   role === "ngo" ? "bg-[#0f8b3c] text-white shadow-md shadow-green-600/20" : "bg-gray-50 text-gray-600 hover:bg-gray-100"
                 }`}
               >
-                <HeartHandshake className="w-4 h-4" /> <span>NGO</span>
+                <HeartHandshake className="w-3.5 xl:w-4 h-3.5 xl:h-4" /> <span>NGO</span>
               </button>
             </div>
 
-            <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-4 xl:space-y-5">
               
               <div className="space-y-2">
                 <label className="text-sm font-bold text-gray-900 block">Email Address</label>
@@ -242,7 +242,7 @@ export default function LoginPage() {
                     type="email" 
                     disabled={isLoading}
                     placeholder="Enter your email address"
-                    className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
+                    className="w-full pl-10 pr-4 py-2.5 xl:py-3 bg-white border border-gray-200 rounded-xl text-xs xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
                     {...register("email")}
                   />
                 </div>
@@ -250,7 +250,7 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-bold text-gray-900">Password</label>
+                  <label className="text-[13px] xl:text-sm font-bold text-gray-900">Password</label>
                   <a href="#" className="text-xs font-bold text-[#0f8b3c] hover:text-green-700 disabled:opacity-50">Forgot Password?</a>
                 </div>
                 <div className="relative">
@@ -261,7 +261,7 @@ export default function LoginPage() {
                     type={showPassword ? "text" : "password"} 
                     disabled={isLoading}
                     placeholder="Enter your password"
-                    className="w-full pl-10 pr-10 py-3 bg-white border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
+                    className="w-full pl-10 pr-10 py-2.5 xl:py-3 bg-white border border-gray-200 rounded-xl text-xs xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
                     {...register("password")}
                   />
                   <button 
@@ -289,7 +289,7 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-3 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-sm"
+                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-2.5 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-sm"
               >
                 {isLoading ? (
                   <>
@@ -304,7 +304,7 @@ export default function LoginPage() {
 
             </form>
 
-            <div className="relative my-5 xl:my-7">
+            <div className="relative my-4 xl:my-6">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
               </div>
@@ -316,7 +316,7 @@ export default function LoginPage() {
             <button 
               type="button"
               disabled={isLoading}
-              className="w-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-3 text-sm shadow-sm disabled:opacity-70"
+              className="w-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-bold py-2.5 xl:py-3 rounded-xl transition-colors flex items-center justify-center gap-3 text-[13px] xl:text-sm shadow-sm disabled:opacity-70"
             >
               <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -327,7 +327,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            <p className="text-center text-xs text-gray-500 mt-8 font-medium">
+            <p className="text-center text-xs text-gray-500 mt-4 xl:mt-6 font-medium">
               Don't have an account? <a href="#" className="text-[#0f8b3c] font-bold hover:text-green-700">Contact your administrator</a>
             </p>
 
