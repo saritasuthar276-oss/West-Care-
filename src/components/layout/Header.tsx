@@ -1,9 +1,14 @@
 "use client";
 
-import { Bell, Search, ChevronDown } from "lucide-react";
+import { Bell, Search, ChevronDown, LogOut } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function Header() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
+
   return (
     <header className="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-10">
       <div className="flex-1 max-w-2xl">
@@ -28,16 +33,32 @@ export function Header() {
           <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-red-500 border-2 border-white"></span>
         </button>
 
-        <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1.5 rounded-lg transition-colors">
-          <div className="h-8 w-8 rounded-full bg-gray-200 overflow-hidden relative border border-gray-200">
-             <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-xs font-bold">NS</div>
-             {/* Actual image can be placed here if available */}
+        <div className="relative">
+          <div 
+            onClick={() => setShowDropdown(!showDropdown)} 
+            className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1.5 rounded-lg transition-colors"
+          >
+            <div className="h-8 w-8 rounded-full bg-gray-200 overflow-hidden relative border border-gray-200">
+               <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-xs font-bold">SS</div>
+            </div>
+            <div className="hidden md:block">
+              <p className="text-sm font-semibold leading-tight whitespace-nowrap">Sarita Suthar</p>
+              <p className="text-[11px] text-gray-500 whitespace-nowrap">Mess Admin</p>
+            </div>
+            <ChevronDown className={`h-4 w-4 text-gray-400 flex-shrink-0 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
           </div>
-          <div className="hidden md:block">
-            <p className="text-sm font-semibold leading-tight whitespace-nowrap">Sarita Suthar</p>
-            <p className="text-[11px] text-gray-500 whitespace-nowrap">Mess Admin</p>
-          </div>
-          <ChevronDown className="h-4 w-4 text-gray-400 flex-shrink-0" />
+
+          {showDropdown && (
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-1 z-50">
+              <button 
+                onClick={() => router.push('/login')} 
+                className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>

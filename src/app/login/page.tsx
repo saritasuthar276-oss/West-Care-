@@ -26,16 +26,16 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex w-full bg-gray-50">
+    <div className="h-screen overflow-hidden flex w-full bg-gray-50">
       
       {/* Left Panel */}
       <div className="hidden lg:flex flex-col w-1/2 bg-white relative overflow-hidden">
         
         {/* Content Container */}
-        <div className="flex-1 p-12 z-10 flex flex-col justify-center max-w-2xl mx-auto w-full relative">
+        <div className="flex-1 p-6 lg:p-10 z-10 flex flex-col justify-center max-w-2xl mx-auto w-full relative">
           
           {/* Logo */}
-          <div className="flex items-center gap-3 mb-12">
+          <div className="flex items-center gap-3 mb-8">
             <div className="text-green-600">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
             </div>
@@ -45,16 +45,16 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <h2 className="text-5xl font-extrabold text-gray-900 leading-[1.1] mb-6">
+          <h2 className="text-4xl font-extrabold text-gray-900 leading-[1.1] mb-4">
             Reduce Food Waste<br />
             Build a <span className="text-green-600">Sustainable<br />Tomorrow</span>
           </h2>
           
-          <p className="text-gray-600 text-lg mb-10 max-w-md">
+          <p className="text-gray-600 text-base mb-6 max-w-md">
             AI-powered mess management to predict, reduce, and reuse food for a healthier and happier community.
           </p>
 
-          <div className="grid grid-cols-1 gap-6 max-w-md relative z-20">
+          <div className="grid grid-cols-1 gap-4 max-w-md relative z-20">
             <div className="flex items-start gap-4">
               <div className="bg-green-50 p-3 rounded-xl text-green-600 mt-1">
                 <BarChart2 className="w-6 h-6" />
@@ -100,7 +100,7 @@ export default function LoginPage() {
         </div>
 
         {/* Bottom Green Stats Bar */}
-        <div className="bg-gradient-to-r from-green-700 to-green-600 p-8 text-white z-10 relative mt-auto" style={{ borderTopRightRadius: '100px' }}>
+        <div className="bg-gradient-to-r from-green-700 to-green-600 p-6 text-white z-10 relative mt-auto" style={{ borderTopRightRadius: '100px' }}>
           <div className="flex justify-between items-center max-w-2xl mx-auto">
             <div className="flex items-center gap-3">
               <Leaf className="w-8 h-8 opacity-80" />
@@ -128,19 +128,19 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel (Login) */}
-      <div className="w-full lg:w-1/2 flex flex-col p-6 sm:p-12 relative overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex flex-col p-6 sm:p-8 relative overflow-y-auto">
         
-        <div className="absolute top-8 right-8">
+        <div className="absolute top-6 right-8">
           <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">
             <ArrowLeft className="w-4 h-4" /> Back to Home
           </button>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center max-w-[480px] w-full mx-auto">
+        <div className="flex-1 flex flex-col justify-center max-w-[440px] w-full mx-auto">
           
-          <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 w-full">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 w-full">
             
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6">
               <div className="flex items-center gap-3">
                 <div className="text-green-600">
                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
@@ -152,13 +152,13 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h2>
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-1">Welcome Back</h2>
               <p className="text-sm text-gray-500">Login to your account to continue</p>
             </div>
 
             {/* Role Tabs */}
-            <div className="flex gap-2 mb-8 bg-gray-50 p-1.5 rounded-xl border border-gray-100">
+            <div className="flex gap-2 mb-6 bg-gray-50 p-1.5 rounded-xl border border-gray-100">
               <button className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white text-xs font-semibold py-2.5 rounded-lg shadow-sm">
                 <Users className="w-3.5 h-3.5" /> Mess Admin
               </button>
@@ -173,7 +173,7 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-5">
+            <form onSubmit={handleLogin} className="space-y-4">
               
               <div className="space-y-1.5">
                 <label className="text-sm font-semibold text-gray-900">Email Address</label>
@@ -228,7 +228,7 @@ export default function LoginPage() {
 
             </form>
 
-            <div className="relative my-8">
+            <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
               </div>
@@ -247,7 +247,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            <p className="text-center text-xs text-gray-500 mt-8 font-medium">
+            <p className="text-center text-xs text-gray-500 mt-6 font-medium">
               Don't have an account? <a href="#" className="text-green-600 font-semibold hover:text-green-700">Contact your administrator</a>
             </p>
 
