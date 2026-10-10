@@ -165,13 +165,9 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel (Login) */}
-      <div className="w-full lg:w-1/2 h-full bg-gray-50/50 flex flex-col relative">
-        
-
-
-        {/* The m-auto ensures the card is perfectly vertically & horizontally centered, safely! */}
-        <div className="m-auto w-full max-w-[460px] py-1 xl:py-10 px-4 sm:px-6">
-          <div className="bg-white rounded-[20px] p-4 xl:p-10 shadow-sm border border-gray-100 w-full">
+      <div className="w-full lg:w-1/2 h-full bg-gray-50/50 flex items-center justify-center p-4 xl:p-8 relative">
+        <div className="w-full max-w-[460px]">
+          <div className="bg-white rounded-[20px] p-5 xl:p-10 shadow-sm border border-gray-100 w-full flex flex-col justify-center">
             
             <div className="flex justify-center mb-3 xl:mb-8">
               <div className="flex items-center gap-2.5">
