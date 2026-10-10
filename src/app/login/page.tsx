@@ -170,28 +170,28 @@ export default function LoginPage() {
 
 
         {/* The m-auto ensures the card is perfectly vertically & horizontally centered, safely! */}
-        <div className="m-auto w-full max-w-[480px] py-2 xl:py-10 px-4 sm:px-6">
-          <div className="bg-white rounded-[24px] p-5 lg:p-6 xl:p-10 shadow-sm border border-gray-100 w-full">
+        <div className="m-auto w-full max-w-[460px] py-1 xl:py-10 px-4 sm:px-6">
+          <div className="bg-white rounded-[20px] p-4 xl:p-10 shadow-sm border border-gray-100 w-full">
             
-            <div className="flex justify-center mb-4 xl:mb-8">
+            <div className="flex justify-center mb-3 xl:mb-8">
               <div className="flex items-center gap-2.5">
                 <div className="text-[#0f8b3c]">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-extrabold tracking-tight text-gray-900">WasteWise <span className="text-[#0f8b3c]">AI</span></h1>
-                  <p className="text-[11px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
+                  <h1 className="text-xl xl:text-2xl font-extrabold tracking-tight text-gray-900">WasteWise <span className="text-[#0f8b3c]">AI</span></h1>
+                  <p className="text-[10px] xl:text-[11px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
                 </div>
               </div>
             </div>
 
-            <div className="text-center mb-4 xl:mb-8">
-              <h2 className="text-xl xl:text-[22px] font-extrabold text-gray-900 mb-1 xl:mb-1.5">Welcome Back</h2>
-              <p className="text-xs xl:text-sm text-gray-500 font-medium">Login to your account to continue</p>
+            <div className="text-center mb-3 xl:mb-8">
+              <h2 className="text-lg xl:text-[22px] font-extrabold text-gray-900 mb-0.5 xl:mb-1.5">Welcome Back</h2>
+              <p className="text-[11px] xl:text-sm text-gray-500 font-medium">Login to your account to continue</p>
             </div>
 
             {/* Role Tabs */}
-            <div className="flex gap-1 mb-4 xl:mb-8">
+            <div className="flex gap-1 mb-3 xl:mb-8">
               <button
                 type="button"
                 onClick={() => setRole("admin")}
@@ -230,38 +230,38 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-4 xl:space-y-5">
+            <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-3 xl:space-y-5">
               
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-gray-900 block">Email Address</label>
+              <div className="space-y-1 xl:space-y-2">
+                <label className="text-xs xl:text-sm font-bold text-gray-900 block">Email Address</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                    <Mail className="h-4 w-4" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                    <Mail className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
                   </div>
                   <input 
                     type="email" 
                     disabled={isLoading}
                     placeholder="Enter your email address"
-                    className="w-full pl-10 pr-4 py-2.5 xl:py-3 bg-white border border-gray-200 rounded-xl text-xs xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
+                    className="w-full pl-9 xl:pl-10 pr-4 py-2 xl:py-3 bg-white border border-gray-200 rounded-lg xl:rounded-xl text-[11px] xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
                     {...register("email")}
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1 xl:space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-[13px] xl:text-sm font-bold text-gray-900">Password</label>
-                  <a href="#" className="text-xs font-bold text-[#0f8b3c] hover:text-green-700 disabled:opacity-50">Forgot Password?</a>
+                  <label className="text-[11px] xl:text-sm font-bold text-gray-900">Password</label>
+                  <a href="#" className="text-[10px] xl:text-xs font-bold text-[#0f8b3c] hover:text-green-700 disabled:opacity-50">Forgot Password?</a>
                 </div>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                    <Lock className="h-4 w-4" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                    <Lock className="h-3.5 w-3.5 xl:h-4 xl:w-4" />
                   </div>
                   <input 
                     type={showPassword ? "text" : "password"} 
                     disabled={isLoading}
                     placeholder="Enter your password"
-                    className="w-full pl-10 pr-10 py-2.5 xl:py-3 bg-white border border-gray-200 rounded-xl text-xs xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
+                    className="w-full pl-9 xl:pl-10 pr-9 py-2 xl:py-3 bg-white border border-gray-200 rounded-lg xl:rounded-xl text-[11px] xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0f8b3c]/20 focus:border-[#0f8b3c] transition-all placeholder:text-gray-400"
                     {...register("password")}
                   />
                   <button 
@@ -275,21 +275,21 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <div className="flex items-center pt-1 pb-1">
+              <div className="flex items-center pt-0.5 pb-0.5 xl:pt-1 xl:pb-1">
                 <input 
                   type="checkbox" 
                   id="rememberMe" 
                   disabled={isLoading}
-                  className="w-4 h-4 rounded border-gray-300 text-[#0f8b3c] focus:ring-[#0f8b3c] disabled:opacity-50"
+                  className="w-3.5 h-3.5 xl:w-4 xl:h-4 rounded border-gray-300 text-[#0f8b3c] focus:ring-[#0f8b3c] disabled:opacity-50"
                   {...register("rememberMe")}
                 />
-                <label htmlFor="rememberMe" className="ml-2.5 text-sm text-gray-700 font-semibold">Remember me</label>
+                <label htmlFor="rememberMe" className="ml-2 text-[11px] xl:text-sm text-gray-700 font-semibold">Remember me</label>
               </div>
 
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-2.5 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-sm"
+                className="w-full bg-[#0f8b3c] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-2 xl:py-3.5 rounded-lg xl:rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md text-xs xl:text-sm"
               >
                 {isLoading ? (
                   <>
@@ -304,19 +304,19 @@ export default function LoginPage() {
 
             </form>
 
-            <div className="relative my-4 xl:my-6">
+            <div className="relative my-3 xl:my-6">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="px-3 bg-white text-gray-400 font-bold text-[10px] tracking-widest">OR</span>
+                <span className="px-2 xl:px-3 bg-white text-gray-400 font-bold text-[9px] xl:text-[10px] tracking-widest">OR</span>
               </div>
             </div>
 
             <button 
               type="button"
               disabled={isLoading}
-              className="w-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-bold py-2.5 xl:py-3 rounded-xl transition-colors flex items-center justify-center gap-3 text-[13px] xl:text-sm shadow-sm disabled:opacity-70"
+              className="w-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-bold py-2 xl:py-3 rounded-lg xl:rounded-xl transition-colors flex items-center justify-center gap-2 xl:gap-3 text-xs xl:text-sm shadow-sm disabled:opacity-70"
             >
               <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -327,7 +327,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            <p className="text-center text-xs text-gray-500 mt-4 xl:mt-6 font-medium">
+            <p className="text-center text-[10px] xl:text-xs text-gray-500 mt-3 xl:mt-6 font-medium">
               Don't have an account? <a href="#" className="text-[#0f8b3c] font-bold hover:text-green-700">Contact your administrator</a>
             </p>
 
