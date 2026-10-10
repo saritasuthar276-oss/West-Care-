@@ -21,8 +21,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const loginSchema = z.object({
-  email: z.string().email("Please enter a valid email address."),
-  password: z.string().min(6, "Password must be at least 6 characters."),
+  email: z.string().optional(),
+  password: z.string().optional(),
   rememberMe: z.boolean(),
 });
 
@@ -39,31 +39,14 @@ export default function LoginPage() {
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema) as any,
-    defaultValues: { rememberMe: true }
+    defaultValues: { rememberMe: true, email: "", password: "" }
   });
 
   const onLoginSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
-    setAuthError("");
-    
-    try {
-      // SIMULATING REAL AUTHENTICATION DELAY
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      // Basic mock authentication check
-      if (data.email === "admin@wastewise.com" && data.password === "password123") {
-        router.push("/dashboard");
-      } else if (data.email.includes("@")) {
-        // Allow any valid email for now as mock login
-        router.push("/dashboard");
-      } else {
-        throw new Error("Invalid credentials. Please try again.");
-      }
-    } catch (err: any) {
-      setAuthError(err.message || "An error occurred during login.");
-    } finally {
-      setIsLoading(false);
-    }
+    // Real-like delay but skips all validation checks as requested
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    router.push("/dashboard");
   };
 
   return (
@@ -152,8 +135,8 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Panel (Login) */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 bg-gray-50/50">
+      {/* Right Panel (Login) - Added h-full to fix centering */}
+      <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center p-6 bg-gray-50/50">
 
         <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 w-full max-w-[420px]">
           
