@@ -165,17 +165,9 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel (Login) */}
-      <div className="w-full lg:w-1/2 h-full bg-[#f8f9fc] flex items-center justify-center p-4 xl:p-10 relative">
-        
-        {/* Back to Home Link */}
-        <div className="absolute top-6 right-8 lg:top-8 lg:right-10 z-10 hidden lg:block">
-          <Link href="/" className="flex items-center gap-2 text-[13px] font-bold text-gray-500 hover:text-gray-900 transition-colors">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
-        </div>
-
-        <div className="w-full max-w-[460px]">
-          <div className="bg-white rounded-[24px] py-4 px-6 sm:px-8 xl:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full flex flex-col justify-center">
+      <div className="w-full lg:w-1/2 h-full bg-white flex items-center justify-center p-6 xl:p-10 relative">
+        <div className="w-full max-w-[440px]">
+          <div className="w-full flex flex-col justify-center">
             
             <div className="flex justify-center mb-4 xl:mb-6">
               <div className="flex items-center gap-3">
