@@ -86,7 +86,7 @@ export default function LoginPage() {
               <span className="text-[#0f8b3c]">Tomorrow</span>
             </h2>
             
-            <p className="text-gray-600 text-[13px] xl:text-[15px] mb-4 xl:mb-6 max-w-md leading-relaxed font-medium">
+            <p className="text-gray-600 text-[12px] xl:text-[14px] mb-4 xl:mb-6 max-w-md leading-relaxed font-medium">
               AI-powered mess management to predict, reduce, and reuse food for a healthier and happier community.
             </p>
 
@@ -175,16 +175,16 @@ export default function LoginPage() {
         </div>
 
         <div className="w-full max-w-[460px]">
-          <div className="bg-white rounded-[24px] p-6 sm:px-8 xl:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full flex flex-col justify-center">
+          <div className="bg-white rounded-[24px] py-4 px-6 sm:px-8 xl:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full flex flex-col justify-center">
             
-            <div className="flex justify-center mb-6 xl:mb-8">
+            <div className="flex justify-center mb-4 xl:mb-6">
               <div className="flex items-center gap-3">
                 <div className="text-[#139c43]">
-                  <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C17 5.24 14.76 3 12 3C9.24 3 7 5.24 7 8C7 10.76 9.24 13 12 13C14.76 13 17 10.76 17 8Z"/><path d="M12 15C8.13 15 5 18.13 5 22H19C19 18.13 15.87 15 12 15Z"/></svg>
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C17 5.24 14.76 3 12 3C9.24 3 7 5.24 7 8C7 10.76 9.24 13 12 13C14.76 13 17 10.76 17 8Z"/><path d="M12 15C8.13 15 5 18.13 5 22H19C19 18.13 15.87 15 12 15Z"/></svg>
                 </div>
                 <div>
-                  <h1 className="text-[24px] xl:text-[28px] font-extrabold tracking-tight text-gray-900 leading-[1.1]">WasteWise <span className="text-[#139c43]">AI</span></h1>
-                  <p className="text-[10px] xl:text-[12px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
+                  <h1 className="text-[18px] xl:text-[22px] font-extrabold tracking-tight text-gray-900 leading-[1.1]">WasteWise <span className="text-[#139c43]">AI</span></h1>
+                  <p className="text-[9px] xl:text-[11px] text-gray-500 font-medium tracking-wide">Smart Food, Better Tomorrow</p>
                 </div>
               </div>
             </div>
@@ -195,11 +195,11 @@ export default function LoginPage() {
             </div>
 
             {/* Role Tabs */}
-            <div className="flex gap-2 mb-6 xl:mb-8">
+            <div className="flex gap-2 mb-4 xl:mb-6">
               <button
                 type="button"
                 onClick={() => setRole("admin")}
-                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[10px] xl:text-[12px] font-bold py-2.5 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[9px] xl:text-[11px] font-bold py-2 px-1 rounded-xl transition-all ${
                   role === "admin" ? "bg-[#139c43] text-white shadow-md shadow-green-600/20" : "bg-[#f4f5f7] text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -208,7 +208,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setRole("student")}
-                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[10px] xl:text-[12px] font-bold py-2.5 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[9px] xl:text-[11px] font-bold py-2 px-1 rounded-xl transition-all ${
                   role === "student" ? "bg-[#139c43] text-white shadow-md shadow-green-600/20" : "bg-[#f4f5f7] text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -217,7 +217,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setRole("supplier")}
-                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[10px] xl:text-[12px] font-bold py-2.5 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[9px] xl:text-[11px] font-bold py-2 px-1 rounded-xl transition-all ${
                   role === "supplier" ? "bg-[#139c43] text-white shadow-md shadow-green-600/20" : "bg-[#f4f5f7] text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -226,7 +226,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setRole("ngo")}
-                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[10px] xl:text-[12px] font-bold py-2.5 px-1 rounded-xl transition-all ${
+                className={`flex-1 flex flex-row items-center justify-center gap-1.5 xl:gap-2 text-[9px] xl:text-[11px] font-bold py-2 px-1 rounded-xl transition-all ${
                   role === "ngo" ? "bg-[#139c43] text-white shadow-md shadow-green-600/20" : "bg-[#f4f5f7] text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -236,8 +236,8 @@ export default function LoginPage() {
 
             <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-3 xl:space-y-5">
               
-              <div className="space-y-1.5 xl:space-y-2">
-                <label className="text-[12px] xl:text-[14px] font-bold text-gray-900 block">Email Address</label>
+              <div className="space-y-1 xl:space-y-1.5">
+                <label className="text-[10px] xl:text-[11px] font-bold text-gray-900 block">Email Address</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                     <Mail className="h-4 w-4" />
@@ -246,16 +246,16 @@ export default function LoginPage() {
                     type="email" 
                     disabled={isLoading}
                     placeholder="Enter your email address"
-                    className="w-full pl-10 pr-4 py-2.5 xl:py-3.5 bg-white border border-gray-200 rounded-xl text-[12px] xl:text-[14px] font-medium focus:outline-none focus:ring-2 focus:ring-[#139c43]/20 focus:border-[#139c43] transition-all placeholder:text-gray-400"
+                    className="w-full pl-10 pr-4 py-2 xl:py-3 bg-white border border-gray-200 rounded-xl text-[10px] xl:text-[11px] font-medium focus:outline-none focus:ring-2 focus:ring-[#139c43]/20 focus:border-[#139c43] transition-all placeholder:text-gray-400"
                     {...register("email")}
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5 xl:space-y-2">
+              <div className="space-y-1 xl:space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-[12px] xl:text-[14px] font-bold text-gray-900">Password</label>
-                  <a href="#" className="text-[11px] xl:text-[13px] font-bold text-[#139c43] hover:text-green-700 disabled:opacity-50">Forgot Password?</a>
+                  <label className="text-[10px] xl:text-[11px] font-bold text-gray-900">Password</label>
+                  <a href="#" className="text-[10px] xl:text-[11px] font-bold text-[#139c43] hover:text-green-700 disabled:opacity-50">Forgot Password?</a>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
@@ -265,7 +265,7 @@ export default function LoginPage() {
                     type={showPassword ? "text" : "password"} 
                     disabled={isLoading}
                     placeholder="Enter your password"
-                    className="w-full pl-10 pr-10 py-2.5 xl:py-3.5 bg-white border border-gray-200 rounded-xl text-[12px] xl:text-[14px] font-medium focus:outline-none focus:ring-2 focus:ring-[#139c43]/20 focus:border-[#139c43] transition-all placeholder:text-gray-400"
+                    className="w-full pl-10 pr-10 py-2 xl:py-3 bg-white border border-gray-200 rounded-xl text-[10px] xl:text-[11px] font-medium focus:outline-none focus:ring-2 focus:ring-[#139c43]/20 focus:border-[#139c43] transition-all placeholder:text-gray-400"
                     {...register("password")}
                   />
                   <button 
@@ -293,7 +293,7 @@ export default function LoginPage() {
               <button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-[#139c43] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-2.5 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm text-[13px] xl:text-[15px]"
+                className="w-full bg-[#139c43] hover:bg-green-700 disabled:bg-green-700/70 text-white font-bold py-2 xl:py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm text-[12px] xl:text-[14px]"
               >
                 {isLoading ? (
                   <>
@@ -308,7 +308,7 @@ export default function LoginPage() {
 
             </form>
 
-            <div className="relative my-6">
+            <div className="relative my-4">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-100"></div>
               </div>
@@ -320,7 +320,7 @@ export default function LoginPage() {
             <button 
               type="button"
               disabled={isLoading}
-              className="w-full bg-[#f4f5f7] hover:bg-gray-200 border border-transparent text-gray-800 font-bold py-2.5 xl:py-3.5 rounded-xl transition-colors flex items-center justify-center gap-3 text-[13px] xl:text-[15px] shadow-sm disabled:opacity-70"
+              className="w-full bg-[#f4f5f7] hover:bg-gray-200 border border-transparent text-gray-800 font-bold py-2 xl:py-3 rounded-xl transition-colors flex items-center justify-center gap-3 text-[12px] xl:text-[14px] shadow-sm disabled:opacity-70"
             >
               <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
