@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address."),
   password: z.string().min(6, "Password must be at least 6 characters."),
-  rememberMe: z.boolean().default(true),
+  rememberMe: z.boolean(),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -38,7 +38,7 @@ export default function LoginPage() {
   const [authError, setAuthError] = useState("");
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(loginSchema) as any,
     defaultValues: { rememberMe: true }
   });
 
