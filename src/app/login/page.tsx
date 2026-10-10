@@ -167,12 +167,7 @@ export default function LoginPage() {
       {/* Right Panel (Login) */}
       <div className="w-full lg:w-1/2 h-full bg-gray-50/50 flex flex-col relative">
         
-        {/* Back to Home Link */}
-        <div className="absolute top-6 right-8 lg:top-8 lg:right-10 z-10">
-          <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
-        </div>
+
 
         {/* The m-auto ensures the card is perfectly vertically & horizontally centered, safely! */}
         <div className="m-auto w-full max-w-[480px] py-4 xl:py-12 px-6">
