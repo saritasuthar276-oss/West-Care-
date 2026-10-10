@@ -26,83 +26,82 @@ export default function LoginPage() {
     <div className="h-screen w-full flex bg-gray-50 font-sans text-gray-900 overflow-hidden">
       
       {/* Left Panel */}
-      <div className="hidden lg:flex flex-col w-1/2 bg-white border-r border-gray-100">
+      <div className="hidden lg:flex flex-col w-1/2 bg-white border-r border-gray-100 h-full">
         
-        {/* Top Content area - removed justify-center to fix top gap */}
-        <div className="flex-1 flex flex-col pt-10 xl:pt-16 px-12 xl:px-16 w-full max-w-3xl mx-auto">
+        {/* Top Content area */}
+        <div className="flex-1 flex flex-col justify-center px-10 xl:px-14 w-full max-w-3xl mx-auto h-full">
           
           {/* Logo */}
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-4">
             <div className="text-green-600 bg-green-50 p-2 rounded-xl">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
             </div>
             <div>
               <h1 className="text-xl font-extrabold tracking-tight">WasteWise <span className="text-green-600">AI</span></h1>
             </div>
           </div>
 
-          <h2 className="text-4xl xl:text-5xl font-extrabold leading-[1.15] mb-6 text-gray-900">
-            Reduce Food Waste<br />
-            Build a <span className="text-green-600">Sustainable Tomorrow</span>
+          <h2 className="text-3xl xl:text-4xl font-extrabold leading-tight mb-3 text-gray-900 pr-4">
+            Reduce Food Waste, Build a <span className="text-green-600">Sustainable Tomorrow</span>
           </h2>
           
-          <p className="text-gray-500 text-base mb-10 max-w-md leading-relaxed">
+          <p className="text-gray-500 text-sm mb-5 max-w-md leading-relaxed">
             AI-powered mess management to predict, reduce, and reuse food for a healthier and happier community.
           </p>
 
-          <div className="grid grid-cols-1 gap-6 max-w-md">
-            <div className="flex items-start gap-4">
-              <div className="bg-green-50/80 p-3 rounded-xl text-green-600 border border-green-100/50">
-                <BarChart2 className="w-5 h-5" />
+          <div className="grid grid-cols-1 gap-4 max-w-md">
+            <div className="flex items-start gap-3">
+              <div className="bg-green-50/80 p-2.5 rounded-xl text-green-600 border border-green-100/50">
+                <BarChart2 className="w-4 h-4" />
               </div>
               <div className="pt-0.5">
-                <h3 className="font-bold text-[15px] text-gray-900 leading-tight mb-1">Smart Predictions</h3>
-                <p className="text-sm text-gray-500 leading-tight">AI-based meal demand forecasting</p>
+                <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-1">Smart Predictions</h3>
+                <p className="text-xs text-gray-500 leading-tight">AI-based meal demand forecasting</p>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-green-50/80 p-3 rounded-xl text-green-600 border border-green-100/50">
-                <Recycle className="w-5 h-5" />
+            <div className="flex items-start gap-3">
+              <div className="bg-green-50/80 p-2.5 rounded-xl text-green-600 border border-green-100/50">
+                <Recycle className="w-4 h-4" />
               </div>
               <div className="pt-0.5">
-                <h3 className="font-bold text-[15px] text-gray-900 leading-tight mb-1">Reduce Waste</h3>
-                <p className="text-sm text-gray-500 leading-tight">Track and minimize food waste</p>
+                <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-1">Reduce Waste</h3>
+                <p className="text-xs text-gray-500 leading-tight">Track and minimize food waste</p>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-orange-50 p-3 rounded-xl text-orange-500 border border-orange-100">
-                <HeartHandshake className="w-5 h-5" />
+            <div className="flex items-start gap-3">
+              <div className="bg-orange-50 p-2.5 rounded-xl text-orange-500 border border-orange-100">
+                <HeartHandshake className="w-4 h-4" />
               </div>
               <div className="pt-0.5">
-                <h3 className="font-bold text-[15px] text-gray-900 leading-tight mb-1">Food Donation</h3>
-                <p className="text-sm text-gray-500 leading-tight">Connect surplus food to NGOs</p>
+                <h3 className="font-bold text-[14px] text-gray-900 leading-tight mb-1">Food Donation</h3>
+                <p className="text-xs text-gray-500 leading-tight">Connect surplus food to NGOs</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Green Stats Bar */}
-        <div className="bg-green-600 py-6 px-12 xl:px-16 text-white shrink-0">
+        <div className="bg-green-600 py-4 px-10 xl:px-14 text-white shrink-0 mt-auto">
           <div className="flex justify-between items-center max-w-3xl mx-auto">
             <div className="flex items-center gap-3">
-              <Leaf className="w-6 h-6 xl:w-8 xl:h-8 text-green-200" />
+              <Leaf className="w-5 h-5 text-green-200" />
               <div>
-                <div className="text-xl xl:text-2xl font-extrabold leading-none">1,200+</div>
-                <div className="text-[11px] xl:text-xs text-green-100 font-medium mt-1">Meals Saved</div>
+                <div className="text-lg font-extrabold leading-none">1,200+</div>
+                <div className="text-[10px] text-green-100 font-medium mt-1">Meals Saved</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Cloud className="w-6 h-6 xl:w-8 xl:h-8 text-green-200" />
+              <Cloud className="w-5 h-5 text-green-200" />
               <div>
-                <div className="text-xl xl:text-2xl font-extrabold leading-none">850 kg</div>
-                <div className="text-[11px] xl:text-xs text-green-100 font-medium mt-1">CO₂ Reduced</div>
+                <div className="text-lg font-extrabold leading-none">850 kg</div>
+                <div className="text-[10px] text-green-100 font-medium mt-1">CO₂ Reduced</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Users className="w-6 h-6 xl:w-8 xl:h-8 text-green-200" />
+              <Users className="w-5 h-5 text-green-200" />
               <div>
-                <div className="text-xl xl:text-2xl font-extrabold leading-none">500+</div>
-                <div className="text-[11px] xl:text-xs text-green-100 font-medium mt-1">Happy Students</div>
+                <div className="text-lg font-extrabold leading-none">500+</div>
+                <div className="text-[10px] text-green-100 font-medium mt-1">Happy Students</div>
               </div>
             </div>
           </div>
